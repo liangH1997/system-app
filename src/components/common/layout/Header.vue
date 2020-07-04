@@ -27,8 +27,24 @@ methods : {
     handleCommand(command){
         // console.log(command)
         if(command=='t'){
-            localStorage.removeItem('token')
-            this.$router.push('/login')
+            this.$confirm('此操作将退出程序, 是否继续?', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                type: 'warning'
+                }).then(() => {
+                    localStorage.removeItem('token')
+                    this.$router.push('/login')
+                    this.$message({
+                        type: 'success',
+                        message: '已退出!'
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消'
+                    });          
+            });
+            
         }else{
             console.log('你点击了'+command)
         }

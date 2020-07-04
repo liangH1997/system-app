@@ -128,6 +128,24 @@ export function getBanner(params){
     })
 }
 
+// 删除banner
+export function delBanner(params){
+    return fetch({
+        url : '/jd/delAd',
+        method : 'GET',
+        params
+    })
+}
+
+// 修改banner
+export function updateBanner(data){
+    return fetch({
+        url : '/jd/updateAd',
+        method : 'POST',
+        data
+    })
+}
+
 // 获取用户信息
 export function getInfo(params){
     return fetch({
@@ -152,5 +170,7 @@ export default {
     getCateGoods,
     addBanner,
     getBanner,
-    getInfo
+    getInfo,
+    delBanner,
+    updateBanner
 }
